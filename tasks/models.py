@@ -2,10 +2,10 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
 
-
 class Category(models.Model):
     slug = models.CharField(max_length=128)
     name = models.CharField(max_length=256)
+    todos_count = models.PositiveIntegerField(default=0)
 
     class Meta:
         verbose_name = 'Категория'
@@ -13,7 +13,6 @@ class Category(models.Model):
 
     def __str__(self):
         return f'{self.name} ({self.slug})'
-
 
 class TodoItem(models.Model):
     PRIORITY_HIGH = 1
