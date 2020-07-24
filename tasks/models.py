@@ -36,6 +36,9 @@ class TodoItem(models.Model):
         "Приоритет", choices=PRIORITY_CHOICES, default=PRIORITY_MEDIUM
     )
     category = models.ManyToManyField(Category, blank=True)
+    class Meta:
+        verbose_name = 'Задачи'
+        verbose_name_plural = 'Задачи'
 
     def __str__(self):
         return self.description.lower()

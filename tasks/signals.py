@@ -8,6 +8,8 @@ def task_cats_added(sender, instance, action, model, **kwargs):
     if action != "post_add":
         return
 
+    print(instance.__dict__)
+
     for cat in instance.category.all():
         slug = cat.slug
 
