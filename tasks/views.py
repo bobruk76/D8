@@ -2,8 +2,9 @@ from django.shortcuts import get_object_or_404, render
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from tasks.models import TodoItem, Category
+from django.views.decorators.cache import cache_page
 
-
+@cache_page(300)
 def index(request):
 
     # 1st version
@@ -22,11 +23,11 @@ def index(request):
 
     return render(request, "tasks/index.html", {"counts": counts})
 
-
+@cache_page(300)
 def filter_tasks(tags_by_task):
     return set(sum(tags_by_task, []))
 
-
+@cache_page(300)
 def tasks_by_cat(request, cat_slug=None):
     u = request.user
     tasks = TodoItem.objects.filter(owner=u).all()

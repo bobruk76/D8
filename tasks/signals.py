@@ -30,3 +30,4 @@ def task_cats_removed(sender, instance, action, model, **kwargs):
 
     for slug, new_count in cat_counter.items():
         Category.objects.filter(slug=slug).update(todos_count=new_count)
+
