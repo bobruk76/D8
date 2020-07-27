@@ -3,6 +3,9 @@ from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from tasks.models import TodoItem, Category, Priority
 from django.views.decorators.cache import cache_page
+import time
+from datetime import datetime
+
 
 def index(request):
 
@@ -26,10 +29,14 @@ def index(request):
     return render(request, "tasks/index.html", {"counts": counts, "priorities": priorities})
 
 @cache_page(300)
+def time_now(request):
+    time_now = datetime.now().strftime("%d.%M.%Y, %H:%M:%S")
+    print(time_now)
+    return render(request, "tasks/time.html", {"time_now": time_now})
+
 def filter_tasks(tags_by_task):
     return set(sum(tags_by_task, []))
 
-@cache_page(300)
 def tasks_by_cat(request, cat_slug=None):
     u = request.user
     tasks = TodoItem.objects.filter(owner=u).all()
