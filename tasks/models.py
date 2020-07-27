@@ -47,6 +47,9 @@ class TodoItem(models.Model):
         return reverse("tasks:details", args=[self.pk])
 
 class Priority(models.Model):
-    item = models.IntegerField(default=0)
-    todos_count = models.PositiveIntegerField(default=0)
+    item = models.IntegerField(default=0, verbose_name = 'Значение приритета')
+    todos_count = models.PositiveIntegerField(default=0, verbose_name = 'Количество задач')
+    class Meta:
+        verbose_name = 'Приоритеты'
+        verbose_name_plural = 'Приоритеты'
 

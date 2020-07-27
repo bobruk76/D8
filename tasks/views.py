@@ -18,11 +18,12 @@ def index(request):
 
     counts = Category.objects.annotate(total_tasks=Count(
         'todoitem')).order_by("-total_tasks")
+
     counts = {c.name: c.total_tasks for c in counts}
 
-    priorities = Priority.objects.all()
+    priorities = {p.item: p.todos_count for p in Priority.objects.all().exclude(todos_count=0)}
 
-    return render(request, "tasks/index.html", {"counts": counts, "priorities" : priorities})
+    return render(request, "tasks/index.html", {"counts": counts, "priorities": priorities})
 
 @cache_page(300)
 def filter_tasks(tags_by_task):
