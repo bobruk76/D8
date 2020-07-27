@@ -1,10 +1,9 @@
 from django.shortcuts import get_object_or_404, render
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
-from tasks.models import TodoItem, Category
+from tasks.models import TodoItem, Category, Priority
 from django.views.decorators.cache import cache_page
 
-@cache_page(300)
 def index(request):
 
     # 1st version
@@ -21,7 +20,9 @@ def index(request):
         'todoitem')).order_by("-total_tasks")
     counts = {c.name: c.total_tasks for c in counts}
 
-    return render(request, "tasks/index.html", {"counts": counts})
+    priorities = Priority.objects.all()
+
+    return render(request, "tasks/index.html", {"counts": counts, "priorities" : priorities})
 
 @cache_page(300)
 def filter_tasks(tags_by_task):

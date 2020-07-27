@@ -45,3 +45,8 @@ class TodoItem(models.Model):
 
     def get_absolute_url(self):
         return reverse("tasks:details", args=[self.pk])
+
+class Priority(models.Model):
+    item = models.IntegerField(default=0)
+    todos_count = models.PositiveIntegerField(default=0)
+
