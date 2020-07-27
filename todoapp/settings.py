@@ -88,7 +88,7 @@ def get_cache():
                 }
             }
         }
-    return {'default': cache}
+    return cache
 
 
 CACHES = get_cache()
