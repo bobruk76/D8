@@ -69,7 +69,7 @@ DATABASES = {'default': dj_database_url.config(default=os.environ.get('DATABASE_
 LANGUAGE_CODE = 'ru-RU'
 
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
 
 
 def get_cache():
