@@ -9,7 +9,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '0.0.0.0', 'todoits.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '0.0.0.0', '*.herokuapp.com']
 
 
 INSTALLED_APPS = [
@@ -69,7 +69,7 @@ DATABASES = {'default': dj_database_url.config(default=os.environ.get('DATABASE_
 LANGUAGE_CODE = 'ru-RU'
 
 
-# django_heroku.settings(locals())
+django_heroku.settings(locals())
 
 
 def get_cache():
