@@ -68,8 +68,8 @@ WSGI_APPLICATION = 'todoapp.wsgi.application'
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
 #         'NAME': 'todoits',
-#         'USER': 'todoits_user',
-#         'PASSWORD': 'todoits_user',
+#         'USER': 'todoitsuser',
+#         'PASSWORD': 'todoitsuser',
 #         'HOST': '192.168.168.242',
 #         'PORT': '5432',
 #     }
@@ -106,9 +106,16 @@ def get_cache():
             }
         }
     return cache
-
-
 CACHES = get_cache()
+
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+#         'LOCATION': 'cache_table',
+#     }
+# }
+
+
 
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 # STATIC_DIR = os.path.join(BASE_DIR, "static")

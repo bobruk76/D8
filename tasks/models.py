@@ -50,6 +50,7 @@ class TodoItem(models.Model):
 class Priority(models.Model):
     item = models.IntegerField(default=0, verbose_name = 'Значение приритета')
     todos_count = models.PositiveIntegerField(default=0, verbose_name = 'Количество задач')
+
     class Meta:
         verbose_name = 'Приоритеты'
         verbose_name_plural = 'Приоритеты'
