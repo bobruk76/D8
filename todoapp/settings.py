@@ -64,6 +64,17 @@ WSGI_APPLICATION = 'todoapp.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'todoits',
+#         'USER': 'todoits_user',
+#         'PASSWORD': 'todoits_user',
+#         'HOST': '192.168.168.242',
+#         'PORT': '5432',
+#     }
+# }
+
 DATABASES = {'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))}
 
 LANGUAGE_CODE = 'ru-RU'
